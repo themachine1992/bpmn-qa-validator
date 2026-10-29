@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             id="defs1" targetNamespace="http://example.com/bpmn">
+  <process id="p1" name="Solicitud de compra">
+    <laneSet id="ls1">
+      <lane id="l1" name="Solicitante">
+        <flowNodeRef>start1</flowNodeRef>
+        <flowNodeRef>t1</flowNodeRef>
+      </lane>
+      <lane id="l2" name="Compras">
+        <flowNodeRef>t2</flowNodeRef>
+        <flowNodeRef>gw1</flowNodeRef>
+        <flowNodeRef>end1</flowNodeRef>
+      </lane>
+      <lane id="l3" name="Calle vacia">
+      </lane>
+    </laneSet>
+    <startEvent id="start1" name="Inicio"/>
+    <task id="t1" name="Solicitud creada"/>
+    <userTask id="t2" name="Aprobar compra"/>
+    <exclusiveGateway id="gw1" name="Aprobada"/>
+    <endEvent id="end1" name="Fin"/>
+    <complexGateway id="gw2" name="Complejo"/>
+    <sequenceFlow id="f1" sourceRef="start1" targetRef="t1"/>
+    <sequenceFlow id="f2" sourceRef="t1" targetRef="t2"/>
+    <sequenceFlow id="f3" sourceRef="t2" targetRef="gw1"/>
+    <sequenceFlow id="f4" sourceRef="gw1" targetRef="end1"/>
+  </process>
+</definitions>
